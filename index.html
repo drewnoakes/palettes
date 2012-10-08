@@ -3,61 +3,16 @@
 <head>
     <title>palettes</title>
 
-    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
 
-    <style>
-        body
-        {
-            text-align: center;
-            background-color: #888;
-            padding: 30px 0;
-        }
-
-        h1
-        {
-            font-family: Pacifico, sans-serif;
-            text-shadow: 2px 2px 1px #444;
-            color: #EEE;
-        }
-
-        ul#palettes
-        {
-            margin: 0;
-            padding: 0;
-        }
-
-        ul#palettes > li
-        {
-            list-style: none;
-            margin: 30px 0;
-            padding: 0;
-        }
-
-        div.swatch
-        {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            margin: 0px;
-            -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-            -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .detail
-        {
-            font-family: consolas, monospace;
-            font-size: 10px;
-            color: #444;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css" type="text/css">
 
     <script id="palette-template" type="text/x-handlebars-template">
         <li>
-            {{#each colors}}<div class="swatch" style="background-color: #{{this}}"></div>{{/each}}
-            <div class="detail">
-                {{#each colors}}#{{this}} {{/each}}
-            </div>
+            {{#each colors}}<div class="palette-item">
+                <div class="swatch" style="background-color: #{{this}}"></div>
+                <div class="detail">#{{this}}</div>
+            </div>{{/each}}
         </li>
     </script>
 </head>
@@ -66,6 +21,11 @@
     <h1>Palettes</h1>
 
     <ul id="palettes"></ul>
+
+    <div id="footer">
+        <img src="images/github-icon.png" />
+        <a href="https://github.com/drewnoakes/palettes">Hosted on GitHub</a>
+    </div>
 
     <script type="text/javascript" src="scripts/lib/jquery-1.8.2.js"></script>
     <!--<script type="text/javascript" src="scripts/lib/require.2.1.0.js" data-main="scripts/app/main"></script>-->
