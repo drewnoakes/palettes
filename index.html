@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+    <style>
+        body
+        {
+            text-align: center;
+            background-color: #888;
+            padding: 30px 0;
+        }
+
+        h1
+        {
+            font-family: Pacifico, sans-serif;
+            text-shadow: 2px 2px 1px #444;
+            color: #EEE;
+        }
+
+        ul#palettes
+        {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul#palettes > li
+        {
+            list-style: none;
+            margin: 30px 0;
+            padding: 0;
+        }
+
+        div.swatch
+        {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin: 0px;
+            -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .detail
+        {
+            font-family: consolas, monospace;
+            font-size: 10px;
+            color: #444;
+        }
+    </style>
+
+    <script id="palette-template" type="text/x-handlebars-template">
+        <li>
+            {{#each colors}}<div class="swatch" style="background-color: #{{this}}"></div>{{/each}}
+            <div class="detail">
+                {{#each colors}}#{{this}} {{/each}}
+            </div>
+        </li>
+    </script>
+</head>
+<body>
+
+    <h1>Palettes</h1>
+
+    <ul id="palettes"></ul>
+
+    <script type="text/javascript" src="scripts/lib/jquery-1.8.2.js"></script>
+    <!--<script type="text/javascript" src="scripts/lib/require.2.1.0.js" data-main="scripts/app/main"></script>-->
+    <script type="text/javascript" src="scripts/lib/underscore.1.4.2.js"></script>
+    <script type="text/javascript" src="scripts/lib/handlebars-1.0.rc.1.js"></script>
+
+    <script>
+        var palettes = [
+            { colors: ['ECD078', 'D95B43', 'C02942', '542437', '53777A'] },
+            { colors: ['69D2E7', 'A7DBD8', 'E0E4CC', 'F38630', 'FA6900'] },
+            { colors: ['FE4365', 'FC9D9A', 'F9CDAD', 'C8C8A9', '83AF9B'] },
+            { colors: ['556270', '4ECDC4', 'C7F464', 'FF6B6B', 'C44D58'] },
+            { colors: ['CFF09E', 'A8DBA8', '79BD9A', '3B8686', '0B486B'] },
+            { colors: ['774F38', 'E08E79', 'F1D4AF', 'ECE5CE', 'C5E0DC'] },
+            { colors: ['E8DDCB', 'CDB380', '036564', '033649', '031634'] },
+            { colors: ['D1F2A5', 'EFFAB4', 'FFC48C', 'FF9F80', 'F56991'] },
+            { colors: ['594F4F', '547980', '45ADA8', '9DE0AD', 'E5FCC2'] },
+            { colors: ['00A0B0', '6A4A3C', 'CC333F', 'EB6841', 'EDC951'] },
+            { colors: ['E94E77', 'D68189', 'C6A49A', 'C6E5D9', 'F4EAD5'] },
+            { colors: ['BCBDAC', 'CFBE27', 'F27435', 'F02475', '3B2D38'] },
+            { colors: ['554236', 'F77825', 'D3CE3D', 'F1EFA5', '60B99A'] },
+            { colors: ['FF4242', 'F4FAD2', 'D4EE5E', 'E1EDB9', 'F0F2EB'] },
+            { colors: ['99B898', 'FECEA8', 'FF847C', 'E84A5F', '2A363B'] },
+            { colors: ['FAD089', 'FF9C5B', 'F5634A', 'ED303C', '3B8183'] },
+            { colors: ['00A8C6', '40C0CB', 'F9F2E7', 'AEE239', '8FBE00'] },
+            { colors: ['EEE6AB', 'C5BC8E', '696758', '45484B', '36393B'] },
+            { colors: ['F04155', 'FF823A', 'F2F26F', 'FFF7BD', '95CFB7'] },
+            { colors: ['452632', '91204D', 'E4844A', 'E8BF56', 'E2F7CE'] },
+            { colors: ['1B676B', '519548', '88C425', 'BEF202', 'EAFDE6'] },
+            { colors: ['F0D8A8', '3D1C00', '86B8B1', 'F2D694', 'FA2A00'] },
+            { colors: ['FF4E50', 'FC913A', 'F9D423', 'EDE574', 'E1F5C4'] },
+            { colors: ['594F4F', '547980', '45ADA8', '9DE0AD', 'E5FCC2'] }
+        ];
+
+        $(document).ready(function ()
+        {
+            var source   = $("#palette-template").html();
+            var template = Handlebars.compile(source);
+
+            _.each(palettes, function(palette)
+            {
+                $('#palettes').append(template(palette))
+            })
+        });
+    </script>
+
+</body>
+</html>
